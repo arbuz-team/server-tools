@@ -1,0 +1,59 @@
+" Włącza magię. Włączając w to przeglądarkę plików i kolorowanie składni
+syntax enable
+colorscheme desert
+
+" Pokazuje kiedy jesteś w trybie wprowadzania/nadpisywania
+set showmode
+
+" Włączam oznakowanie lini kolejnymi numerami lini
+set number
+
+" Kiedy komenda się wykonuje, pokazuj ją w pasku stanu
+set showcmd
+
+" Włącza magię dla uzupełniania poleceń w trybie wykonywania
+set wildmenu
+
+" Włącza „liniał” (informacje o stanie edytora) u dołu ekranu
+set ruler
+
+" Dodawaj wcięcia inteligentnie, zamiast cały czas powracać do samego początku wiersza
+set autoindent
+
+" Zamieniaj znak tabulacji na ciąg spacji
+set expandtab
+
+" Nie zawijaj tekstu (sprawia, że okna wyglądają brzydko)
+set nowrap
+
+" Podświetlaj wszystkie wyniki wyszukiwania
+set hlsearch
+
+" Podświetlaj odpowiadające nawiasy, klamry itd.
+set showmatch
+
+" Ignoruj wielkość znaków przy wyszukiwaniu
+set ignorecase
+
+" Jeżeli wyszukiwana fraza zawiera wielkie litery, przestań ignorować wielkość znaków
+set smartcase
+
+" Kiedy chcę sprawdzania pisowni, to chcę jej w języku polskim
+set spelllang=pl_pl
+
+
+
+" size of a hard tabstop
+set tabstop=4
+
+" size of an "indent"
+set shiftwidth=4
+
+" a combination of spaces and tabs are used to simulate tab stops at a width
+" other than the (hard)tabstop
+set softtabstop=4
+
+
+" Szukanie inkrementacyjne 
+set incsearch
+
