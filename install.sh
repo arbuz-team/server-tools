@@ -69,8 +69,8 @@ ssh-copy-id server-tools@de.arbuz.team
 crontab -l > ./temp/mycron
 
 # append backup line to crontab
-echo "0 3 * * * $(dirname $0)/backup.sh >> $(dirname $0)/log/stdout.log 2>> $(dirname $0)/log/stderr.log"
-echo "0 4 * * * $(dirname $0)/sync_backup.sh >> $(dirname $0)/log/stdout.log 2>> $(dirname $0)/log/stderr.log"
+echo "0 3 * * * $(dirname $0)/backup.sh >> $(dirname $0)/log/stdout.log 2>> $(dirname $0)/log/stderr.log" >> ./temp/mycron
+echo "0 4 * * * $(dirname $0)/sync_backup.sh >> $(dirname $0)/log/stdout.log 2>> $(dirname $0)/log/stderr.log" >> ./temp/mycron
 
 # reload crontab
 crontab ./temp/mycron
