@@ -3,11 +3,17 @@
 echo -n "Podaj nazwę bazy danych: "
 read database
 
-echo -n "Podaj nazwę użytkownika "
+echo -n "Podaj nazwę użytkownika: "
 read username
 
 echo -n "Podaj hasło użytkownika: "
 read password
+
+if [[ $database == *"-"* ]] || [[ $username == *"-"* ]]
+then
+    echo "Database name and username cannot contain \`-\`"
+    exit 1
+fi
 
 
 create_database="CREATE DATABASE $database CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"

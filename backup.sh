@@ -1,17 +1,19 @@
 #! /bin/bash
 
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+
 # backup mysql
-mysqldump --all-databases > ./temp/server.sql
+mysqldump --all-databases > $SCRIPT_DIR/temp/server.sql
 
 # backup apache files
-mkdir ./temp/apache
-cp /etc/apache2/sites-available/* ./temp/apache/
+mkdir $SCRIPT_DIR/temp/apache
+cp /etc/apache2/sites-available/* $SCRIPT_DIR/temp/apache/
 
 # backup websites files
-cp -r /home/internet ./temp/
+cp -r /home/internet $SCRIPT_DIR/temp/
 
 # create archive
-tar -czf ./backup/$(date +%u).tar.gz ./temp/server.sql ./temp/apache ./temp/internet
+tar -czf $SCRIPT_DIR/backup/$(date +%u).tar.gz $SCRIPT_DIR/temp/server.sql $SCRIPT_DIR/temp/apache $SCRIPT_DIR/temp/internet
 
 # cleaning
-rm -r ./temp/server.sql ./temp/apache ./temp/internet
+rm -r $SCRIPT_DIR/temp/server.sql $SCRIPT_DIR/temp/apache $SCRIPT_DIR/temp/internet

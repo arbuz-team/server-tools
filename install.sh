@@ -1,13 +1,16 @@
 #! /bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+
 # config files
 
 sudo apt-get update
 mkdir -p ~/.config/fish/
 
-cp ./config/vimrc ~/.vimrc
-cp ./config/config.fish ~/.config/fish/config.fish
+cp $SCRIPT_DIR/config/vimrc ~/.vimrc
+cp $SCRIPT_DIR/config/config.fish ~/.config/fish/config.fish
 
-# instalation
+# base packages
 
 echo yes | sudo apt-get install ssh
 echo yes | sudo apt-get install fish
@@ -29,10 +32,15 @@ echo yes | sudo apt-get install git
 echo yes | sudo apt-get install apache2
 echo yes | sudo apt-get install python-setuptools
 
-echo yes | sudo apt-get install libapache2-mod-wsgi     # python2
-echo yes | sudo apt-get install libapache2-mod-wsgi-py3 # python3
+# php packages
+
+echo yes | sudo apt-get install php7.0 libapache2-mod-php7.0
+echo yes | sudo apt-get install php7.0-mysql
 
 # python packages
+
+echo yes | sudo apt-get install libapache2-mod-wsgi     # python2
+echo yes | sudo apt-get install libapache2-mod-wsgi-py3 # python3
 
 echo yes | sudo apt-get install python 
 echo yes | sudo apt-get install python-pip
@@ -66,13 +74,13 @@ ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 ssh-copy-id server-tools@de.arbuz.team
 
 # get actual crontab
-crontab -l > ./temp/mycron
+crontab -l > $SCRIPT_DIR/temp/mycron
 
 # append backup line to crontab
-echo "0 3 * * * $(dirname $0)/backup.sh >> $(dirname $0)/log/stdout.log 2>> $(dirname $0)/log/stderr.log" >> ./temp/mycron
-echo "0 4 * * * $(dirname $0)/sync_backup.sh >> $(dirname $0)/log/stdout.log 2>> $(dirname $0)/log/stderr.log" >> ./temp/mycron
+echo "0 3 * * * $SCRIPT_DIR/backup.sh >> $SCRIPT_DIR/log/stdout.log 2>> $SCRIPT_DIR/log/stderr.log" >> $SCRIPT_DIR/temp/mycron
+echo "0 4 * * * $SCRIPT_DIR/sync_backup.sh >> $SCRIPT_DIR/log/stdout.log 2>> $SCRIPT_DIR/log/stderr.log" >> $SCRIPT_DIR/temp/mycron
 
 # reload crontab
-crontab ./temp/mycron
-rm ./temp/mycron
+crontab $SCRIPT_DIR/temp/mycron
+rm $SCRIPT_DIR/temp/mycron
 
