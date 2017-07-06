@@ -1,4 +1,3 @@
 #! /bin/bash
 
-# create ssh key
-ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+scp $(dirname $0)/backups/* server-tools@de.arbuz.team:/home/server-tools/backup/cz.arbuz.team

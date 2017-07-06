@@ -61,12 +61,16 @@ echo yes | sudo pip3 install mysqlclient
 
 chmod +x *.sh
 
+# create and copy ssh key
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+ssh-copy-id server-tools@de.arbuz.team
+
 # get actual crontab
 crontab -l > ./temp/mycron
 
 # append backup line to crontab
 echo "0 3 * * * $(dirname $0)/backup.sh >> $(dirname $0)/log/stdout.log 2>> $(dirname $0)/log/stderr.log"
-echo "0 3 * * * $(dirname $0)/sync_backup.sh >> $(dirname $0)/log/stdout.log 2>> $(dirname $0)/log/stderr.log"
+echo "0 4 * * * $(dirname $0)/sync_backup.sh >> $(dirname $0)/log/stdout.log 2>> $(dirname $0)/log/stderr.log"
 
 # reload crontab
 crontab ./temp/mycron
