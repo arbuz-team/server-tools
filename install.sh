@@ -11,7 +11,7 @@ cp $SCRIPT_DIR/config/vimrc ~/.vimrc
 cp $SCRIPT_DIR/config/config.fish ~/.config/fish/config.fish
 
 # base packages
-sudo apt-get install -y ssh fish vim tmux screen htop sysstat nmap gcc gdb g++ mtools lm_sensors git apache2 python-setuptools
+sudo apt-get install -y ssh fish vim tmux screen htop sysstat nmap gcc gdb g++ mtools lm-sensors git apache2 python-setuptools
 
 # php packages
 #sudo apt-get install -y php7.0 libapache2-mod-php7.0 php7.0-mysql
